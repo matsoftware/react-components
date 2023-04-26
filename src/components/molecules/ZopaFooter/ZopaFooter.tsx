@@ -13,6 +13,7 @@ import linkedin from '../../../content/images/social/linkedin.svg';
 import instagram from '../../../content/images/social/instagram.svg';
 import FlexContainer from '../../layout/FlexContainer/FlexContainer';
 import { Footer, Heading, LegalBlock, List, LogoBlock, SocialBlock, SocialLink } from './styles';
+import { HeadingTags } from '../../atoms/Heading/Heading';
 
 /**
  * Use this component to render a Zopa Footer
@@ -28,6 +29,7 @@ export interface FooterProps extends HTMLAttributes<HTMLDivElement> {
   renderLink?: (props: LinkProps) => React.ReactNode;
   mainCustomLegalCopy?: string | string[];
   additionalCopy?: string[];
+  headingsAs?: Exclude<HeadingTags, ['h1', 'span']>;
 }
 
 export const footerLinkStyle = css`
@@ -83,6 +85,7 @@ const ZopaFooter = ({
   renderLink = (props: LinkProps) => <StyledLink {...props} />,
   additionalCopy = [],
   mainCustomLegalCopy,
+  headingsAs = 'h4',
   ...rest
 }: FooterProps) => {
   const theme = useThemeContext();
@@ -93,7 +96,7 @@ const ZopaFooter = ({
         {theme.footer.showFooterLinks && (
           <FlexRow className="mb-6">
             <FlexCol xs={12} s={6} l={3} className="mb-8 s:mb-9">
-              <Heading as="h4" className="mb-4 s:mb-6 mt-0">
+              <Heading as={headingsAs} className="mb-4 s:mb-6 mt-0">
                 What we do
               </Heading>
               <List>
@@ -114,7 +117,7 @@ const ZopaFooter = ({
               </List>
             </FlexCol>
             <FlexCol xs={12} s={6} l={3} className="mb-8 s:mb-9">
-              <Heading as="h4" className="mb-4 s:mb-6 mt-0">
+              <Heading as={headingsAs} className="mb-4 s:mb-6 mt-0">
                 About Zopa
               </Heading>
               <List>
@@ -141,7 +144,7 @@ const ZopaFooter = ({
               </List>
             </FlexCol>
             <FlexCol xs={12} s={6} l={3} className="mb-8 s:mb-9">
-              <Heading as="h4" className="mb-4 s:mb-6 mt-0">
+              <Heading as={headingsAs} className="mb-4 s:mb-6 mt-0">
                 Legal
               </Heading>
               <List>
@@ -163,7 +166,7 @@ const ZopaFooter = ({
               </List>
             </FlexCol>
             <FlexCol xs={12} s={6} l={3} className="mb-8 s:mb-9">
-              <Heading as="h4" className="mb-4 s:mb-6 mt-0">
+              <Heading as={headingsAs} className="mb-4 s:mb-6 mt-0">
                 Navigation
               </Heading>
               <List>
